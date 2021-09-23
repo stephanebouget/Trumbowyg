@@ -15,17 +15,21 @@
         plugins: {
             pasteImage: {
                 init: function (trumbowyg) {
+                    console.info('FORK');
                     trumbowyg.pasteHandlers.push(function (pasteEvent) {
                         try {
                             var items = (pasteEvent.originalEvent || pasteEvent).clipboardData.items,
                                 mustPreventDefault = false,
                                 reader;
+                            console.info('FORK items', items);
 
                             for (var i = items.length - 1; i >= 0; i -= 1) {
                                 if (items[i].type.match(/^image\//)) {
                                     reader = new FileReader();
                                     /* jshint -W083 */
                                     reader.onloadend = function (event) {
+                                        console.info('FORK event', event);
+
                                        // trumbowyg.execCmd('insertImage', event.target.result, false, true);
                                         trumbowyg.execCmd('insertImage', 'http://localhost:9000/images/logo-parrot.svg', false, true);
                                     };
