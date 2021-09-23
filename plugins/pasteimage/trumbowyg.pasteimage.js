@@ -26,7 +26,8 @@
                                     reader = new FileReader();
                                     /* jshint -W083 */
                                     reader.onloadend = function (event) {
-                                        trumbowyg.execCmd('insertImage', event.target.result, false, true);
+                                       // trumbowyg.execCmd('insertImage', event.target.result, false, true);
+                                        trumbowyg.execCmd('insertImage', 'http://localhost:9000/images/logo-parrot.svg', false, true);
                                     };
                                     /* jshint +W083 */
                                     reader.readAsDataURL(items[i].getAsFile());
